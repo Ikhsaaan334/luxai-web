@@ -1,8 +1,8 @@
-##Lux AI – Landing Page
+# Lux AI – Landing Page
 
 ---
 
-##Features
+## Features
 
 - Modern, responsive design using Tailwind CSS
 
@@ -12,6 +12,6 @@
 
 ---
 
-##Link
+## Link
 
 - GitHub: github.com/Ikhsaaan334/lux-ai-discord-bot
