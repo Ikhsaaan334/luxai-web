@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lux AI - Smart Discord Bot</title>
+    <meta name="description"
+        content="Lux AI brings intelligent conversations to Discord with Google Gemini API. Simple setup, powerful AI responses with the !lux command. 100% free Discord bot.">
+    <meta property="og:title" content="Lux AI - Smart Discord Bot">
+    <meta property="og:description"
+        content="Powered by Google Gemini API, bringing intelligent conversations directly to your Discord server with the simple !lux command.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <!-- <div class="w-8 h-8 discord-gradient rounded-lg flex items-center justify-center">
+                        <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                    </div> -->
+                    <span class="text-xl font-bold">Lux AI</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#getting-started" class="nav-link">Getting Started</a>
+                    <a href="#support" class="nav-link">Support</a>
+
+                    <!-- Theme Toggle -->
+                    <!-- <button id="theme-toggle" class="theme-toggle">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button> -->
+
+                    <button onclick="inviteBot()" class="btn-primary">
+                        Invite Bot
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <!-- <div class="md:hidden flex items-center space-x-2">
+                    <button id="theme-toggle-mobile" class="theme-toggle">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="theme-toggle">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div> -->
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden border-t border-gray-200 dark:border-gray-700 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#features" class="nav-link p-2">Features</a>
+                    <a href="#getting-started" class="nav-link p-2">Getting Started</a>
+                    <a href="#support" class="nav-link p-2">Support</a>
+                    <button onclick="inviteBot()" class="btn-primary w-full mt-4">
+                        Invite Bot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-20 px-4 sm:px-6 lg:px-8 hero-gradient">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="max-w-4xl mx-auto">
+                <!-- Bot Avatar -->
+                <!-- <div class="mb-8 flex justify-center">
+                    <div class="relative">
+                        <div class="w-24 h-24 discord-gradient rounded-full flex items-center justify-center shadow-2xl">
+                            <i data-lucide="check-circle" class="w-12 h-12 text-white"></i>
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 w-8 h-8 mint-gradient rounded-full flex items-center justify-center">
+                            <i data-lucide="bot" class="w-4 h-4 text-white"></i>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Main Title -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    <span style="color: hsl(var(--discord))">Lux AI</span> – Smart Discord Bot
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    Powered by
+                    <span style="color: hsl(var(--google-blue))" class="font-semibold">Google Gemini API</span>,
+                    bringing intelligent conversations directly to your Discord server with the simple
+                    <code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded font-mono"
+                        style="color: hsl(var(--discord))">!lux</code>
+                    command.
+                </p>
+
+                <!-- Feature Highlights -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto">
+                    <div class="card p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+                        <div class="flex items-center space-x-2" style="color: hsl(var(--discord))">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                            <span class="font-medium">AI-Powered</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                            Advanced Gemini AI responses
+                        </p>
+                    </div>
+
+                    <div class="card p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+                        <div class="flex items-center space-x-2" style="color: hsl(var(--mint))">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="font-medium">Easy Setup</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                            One-click Discord integration
+                        </p>
+                    </div>
+
+                    <div class="card p-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+                        <div class="flex items-center space-x-2" style="color: hsl(var(--google-blue))">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                            <span class="font-medium">100% Free</span>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                            No premium features or limits
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button onclick="inviteBot()" class="btn-primary text-lg px-8 py-4 flex items-center space-x-2">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z" />
+                        </svg>
+                        <span>Invite to Discord</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+
+                    <button onclick="scrollToSection('getting-started')" class="btn-secondary text-lg px-8 py-4">
+                        How to Set up Lux AI
+                    </button>
+                </div>
+
+                <!-- Demo Video Section -->
+                <div class="max-w-2xl mx-auto py-10 px-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Watch Demo:</p>
+                    <div class="rounded-xl overflow-hidden mb-8">
+                        <iframe class="w-full h-[315px]"
+                            src="https://www.youtube.com/embed/VV0h_qiLRhQ?autoplay=1&mute=1&rel=0"
+                            title="Lux AI Discord Bot Demo" frameborder="0" allow="autoplay; encrypted-media"
+                            allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Usage Example -->
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Quick Start Example:</p>
+                    <div class="bg-gray-900 rounded-xl p-6 text-left overflow-x-auto">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-400 text-sm ml-2">#general</span>
+                        </div>
+                        <div class="font-mono text-sm space-y-2">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400">you</span>
+                                <span class="text-gray-300">!lux explain quantum computing</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-green-400">Lux AI</span>
+                                <span class="text-gray-300">Quantum computing leverages quantum mechanics...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    Powerful Features for Your Server
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Lux AI brings advanced conversational AI to Discord with simple commands and intelligent responses
+                    powered by Google's Gemini technology.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card card p-8 shadow-lg">
+                    <div class="w-12 h-12 discord-gradient rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Advanced AI Responses</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Powered by Google Gemini API for intelligent, contextual conversations that understand nuance
+                        and provide helpful responses.
+                    </p>
+                </div>
+
+                <div class="feature-card card p-8 shadow-lg">
+                    <div class="w-12 h-12 mint-gradient rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="message-square" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Simple Commands</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Just type !lux followed by your question or prompt to start intelligent conversations.
+                    </p>
+                </div>
+
+                <div class="feature-card card p-8 shadow-lg">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="settings" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Zero Configuration</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Works immediately after invitation. No complex setup, API keys, or configuration required. Just
+                        invite and start chatting.
+                    </p>
+                </div>
+
+                <div class="feature-card card p-8 shadow-lg">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-purple-500 to-green-500 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="message-square" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Context-Aware Conversations</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Understands conversation context and maintains coherent discussions across multiple messages and
+                        topics.
+                    </p>
+                </div>
+
+                <div class="feature-card card p-8 shadow-lg">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Reliable & Fast</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Built for high availability with quick response times. Your server members get instant,
+                        intelligent responses.
+                    </p>
+                </div>
+
+                <div class="feature-card card p-8 shadow-lg">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Multi-Server Support</h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        Works seamlessly across multiple Discord servers with independent configurations and
+                        conversation contexts.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="py-20 hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    How to Set up Lux AI
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Setting up Lux AI is incredibly simple. Follow these three steps to bring intelligent conversations
+                    to your Discord server.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="relative">
+                        <div
+                            class="w-16 h-16 discord-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-white font-bold text-xl">1</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Invite the Bot</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Click the "Invite to Discord" button and select your server. Grant the necessary permissions for
+                        optimal functionality.
+                    </p>
+                    <div class="card p-4">
+                        <svg class="w-8 h-8 mx-auto" style="color: hsl(var(--discord))" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="relative">
+                        <div
+                            class="w-16 h-16 mint-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-white font-bold text-xl">2</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Start Chatting</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Use the !lux command followed by your question or prompt in any channel.
+                    </p>
+                    <div class="card p-4">
+                        <div class="bg-gray-900 rounded-lg p-4">
+                            <div class="font-mono text-sm text-left">
+                                <div class="text-gray-400 mb-1">#general</div>
+                                <div class="text-white">!lux Hello there!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="relative">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <span class="text-white font-bold text-xl">3</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Enjoy AI Power</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Lux AI responds instantly with intelligent, contextual answers powered by Google's advanced
+                        Gemini technology.
+                    </p>
+                    <div class="card p-4">
+                        <div class="flex items-center space-x-2 justify-center" style="color: hsl(var(--mint))">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="font-medium">Ready to use!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-16">
+                <button onclick="inviteBot()" class="btn-primary text-lg px-8 py-4 flex items-center space-x-2 mx-auto">
+                    <span>Start Using Lux AI Now</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    Need Help or Have Questions?
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    We're here to help you get the most out of Lux AI. Find resources, documentation, and community
+                    support.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8 shadow-lg text-center">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="book" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Documentation</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Comprehensive guides and tutorials to help you get the most out of Lux AI's features.
+                    </p>
+                    <a href="https://github.com/Ikhsaaan334/lux-ai-discord-bot"
+                        class="inline-flex items-center space-x-2 font-medium transition-colors duration-200"
+                        style="color: hsl(var(--google-blue))">
+                        <span>Read Docs</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="card p-8 shadow-lg text-center">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="github" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">GitHub Repository</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        View the source code, report issues, or contribute to the project on GitHub.
+                    </p>
+                    <a href="https://github.com/Ikhsaaan334/lux-ai-discord-bot"
+                        class="inline-flex items-center space-x-2 font-medium transition-colors duration-200"
+                        style="color: hsl(var(--google-blue))">
+                        <span>View on GitHub</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="card p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 mint-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Reach me through my daily Discord</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Online everyday to play games, chat, study college, and help with any issues you might have with
+                        Lux AI.
+                    </p>
+                    <a href="https://discord.gg/vpKPDNF"
+                        class="inline-flex items-center space-x-2 font-medium transition-colors duration-200"
+                        style="color: hsl(var(--discord))">
+                        <span>Join Discord</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: hsl(var(--discord-darker))" class="text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 discord-gradient rounded-lg flex items-center justify-center">
+                            <i data-lucide="bot" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-2xl font-bold">Lux AI</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Bringing intelligent conversations to Discord with the power of Google Gemini API. Simple, fast,
+                        and completely free.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Ikhsaaan334/lux-ai-discord-bot"
+                            class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-200">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://github.com/Ikhsaaan334/lux-ai-discord-bot"
+                            class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-200">
+                            <i data-lucide="book" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://discord.gg/vpKPDNF"
+                            class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features"
+                                class="text-gray-300 hover:text-white transition-colors duration-200">Features</a></li>
+                        <li><a href="#getting-started"
+                                class="text-gray-300 hover:text-white transition-colors duration-200">Getting
+                                Started</a></li>
+                        <li><a href="#support"
+                                class="text-gray-300 hover:text-white transition-colors duration-200">Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://github.com/Ikhsaaan334/lux-ai-discord-bot"
+                                class="text-gray-300 hover:text-white transition-colors duration-200">Documentation</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-white transition-colors duration-200">Changelog</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors duration-200">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 Lux AI. Made by Ikhsaaan334 for the Discord community.
+                </p>
+                <!-- <p class="text-gray-400 text-sm mt-4 sm:mt-0">
+                    Powered by <span style="color: hsl(var(--google-blue))">Google Gemini API</span>
+                </p> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

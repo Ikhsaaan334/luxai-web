@@ -1,0 +1,137 @@
+:root {
+            --discord: 235 86% 65%;
+            --google-blue: 217 89% 61%;
+            --mint: 170 100% 42%;
+            --discord-dark: 223 7% 20%;
+            --discord-darker: 228 7% 14%;
+        }
+
+        .dark {
+            --background: 224 10% 4%;
+            --foreground: 0 0% 98%;
+            --muted: 224 4% 16%;
+            --muted-foreground: 225 5% 65%;
+            --border: 224 4% 16%;
+            --card: 224 10% 4%;
+            --card-foreground: 0 0% 98%;
+        }
+
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 23 27% 10%;
+            --muted: 60 5% 96%;
+            --muted-foreground: 25 5% 45%;
+            --border: 20 6% 90%;
+            --card: 0 0% 100%;
+            --card-foreground: 23 27% 10%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .discord-gradient {
+            background: linear-gradient(135deg, hsl(var(--discord)) 0%, hsl(var(--google-blue)) 100%);
+        }
+
+        .mint-gradient {
+            background: linear-gradient(135deg, hsl(var(--mint)) 0%, hsl(var(--google-blue)) 100%);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(225, 11%, 95%) 30%, hsl(0, 0%, 100%) 100%);
+        }
+
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, hsl(224, 10%, 4%) 0%, hsl(228, 7%, 14%) 50%, hsl(224, 10%, 4%) 100%);
+        }
+
+        .card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.75rem;
+        }
+
+        .btn-primary {
+            background: hsl(var(--discord));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: hsl(var(--discord) / 0.9);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: hsl(var(--foreground));
+            padding: 0.75rem 2rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: hsl(var(--discord));
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: hsl(var(--muted-foreground));
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: hsl(var(--discord));
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hide mobile menu by default */
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* Feature cards hover effect */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background: hsl(var(--muted));
+        }
