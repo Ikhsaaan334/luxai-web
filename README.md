@@ -15,3 +15,4 @@
 ## Link
 
 - GitHub: github.com/Ikhsaaan334/lux-ai-discord-bot
+- Website: https://luxai-web.vercel.app/
